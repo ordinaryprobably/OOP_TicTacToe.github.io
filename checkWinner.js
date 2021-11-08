@@ -17,7 +17,6 @@ export default class Rule {
         this.myTurn = true;
         this.draw = 0;
 
-        this.innerDiv = document.querySelectorAll('#inner-div');
         this.gameSection = document.querySelector('.game-section');
         this.playBtn = document.querySelector('.playBtn');
         this.resetBtn = document.querySelector('.resetBtn');   
@@ -233,10 +232,12 @@ export default class Rule {
     }
 
     playGame() {
+        const innerDiv = document.querySelectorAll('#inner-div');
+
         this.started = true;
         
-        for(let i = 0; i < this.innerDiv.length; i++) {
-            this.innerDiv[i].addEventListener('click', this.onClick)
+        for(let i = 0; i < innerDiv.length; i++) {
+            innerDiv[i].addEventListener('click', this.onClick)
         }
     
         this.playBtn.style.visibility = 'hidden';
@@ -244,6 +245,8 @@ export default class Rule {
     }
 
     resetGame() {
+        const innerDiv = document.querySelectorAll('#inner-div');
+
         this.draw = 0;
         if(this.started) {
             for(let i = 0; i < 3; i++) {
@@ -251,9 +254,9 @@ export default class Rule {
                     this.table[i][j] = null
                 }
             }
-            for(let i = 0; i < this.innerDiv.length; i++) {
-                this.innerDiv[i].innerHTML = '';
-                this.innerDiv[i].removeEventListener('click', this.onClick)
+            for(let i = 0; i < innerDiv.length; i++) {
+                innerDiv[i].innerHTML = '';
+                innerDiv[i].removeEventListener('click', this.onClick)
             }
             if(document.querySelector('.result')) {
                 const result = document.querySelector('.result');
