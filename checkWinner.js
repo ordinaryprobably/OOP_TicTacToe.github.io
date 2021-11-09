@@ -18,8 +18,7 @@ export default class Rule {
         this.draw = 0;
 
         this.gameSection = document.querySelector('.game-section');
-        this.playBtn = document.querySelector('.playBtn');
-        this.resetBtn = document.querySelector('.resetBtn');   
+
     }
     checkWinner() {
         this.checkHorizontal();
@@ -233,6 +232,8 @@ export default class Rule {
 
     playGame() {
         const innerDiv = document.querySelectorAll('#inner-div');
+        const playBtn = document.querySelector('.playBtn');
+        const resetBtn = document.querySelector('.resetBtn');   
 
         this.started = true;
         
@@ -240,12 +241,14 @@ export default class Rule {
             innerDiv[i].addEventListener('click', this.onClick)
         }
     
-        this.playBtn.style.visibility = 'hidden';
-        this.resetBtn.style.visibility = 'visible';
+        playBtn.style.visibility = 'hidden';
+        resetBtn.style.visibility = 'visible';
     }
 
     resetGame() {
         const innerDiv = document.querySelectorAll('#inner-div');
+        const playBtn = document.querySelector('.playBtn');
+        const resetBtn = document.querySelector('.resetBtn');   
 
         this.draw = 0;
         if(this.started) {
@@ -264,7 +267,7 @@ export default class Rule {
             }
         }
     
-        this.playBtn.style.visibility = 'visible';
-        this.resetBtn.style.visibility = 'hidden';
+        playBtn.style.visibility = 'visible';
+        resetBtn.style.visibility = 'hidden';
     }
 }
